@@ -224,16 +224,25 @@
       return;
     }
 
+    if (typeof DEJAVU_SANS_BASE64 !== "string" || !DEJAVU_SANS_BASE64) {
+      console.error("Шрифт DejaVu Sans не загружен");
+      return;
+    }
+
     const { winner, profile } = getResultContext();
     const participantName = getParticipantName();
     const issueDate = new Date();
     const certificateNumber = generateCertificateNumber();
     const doc = new window.jspdf.jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
+    doc.addFileToVFS("DejaVuSans.ttf", DEJAVU_SANS_BASE64);
+    doc.addFont("DejaVuSans.ttf", "DejaVuSans", "normal");
+    doc.setFont("DejaVuSans", "normal");
+
     const pageWidth = doc.internal.pageSize.getWidth();
     const margin = 20;
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont(undefined, "bold");
     doc.setFontSize(22);
     doc.text("СЕРТИФИКАТ УЧАСТНИКА", pageWidth / 2, 40, { align: "center" });
 
@@ -241,7 +250,7 @@
     doc.setLineWidth(0.8);
     doc.line(margin, 46, pageWidth - margin, 46);
 
-    doc.setFont("helvetica", "normal");
+    doc.setFont(undefined, "normal");
     doc.setFontSize(13);
     doc.text(
       `Подтверждается, что ${participantName} прошёл(а) профориентационный тест „Ваш мозг в IT“`,
@@ -250,11 +259,11 @@
       { maxWidth: pageWidth - margin * 2 }
     );
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont(undefined, "bold");
     doc.setFontSize(16);
     doc.text("Результат теста", margin, 90);
 
-    doc.setFont("helvetica", "normal");
+    doc.setFont(undefined, "normal");
     doc.setFontSize(14);
     doc.text(profile.title, margin, 102);
     doc.text(`Профиль: ${winner}`, margin, 112);
