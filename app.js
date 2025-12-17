@@ -30,10 +30,15 @@
   const resultImage = document.getElementById("result-image");
   const resultBadge = document.getElementById("result-badge");
   const resultSummary = document.getElementById("result-summary");
+  const questionCountLabel = document.getElementById("question-count");
 
   const total = data.questions.length;
   const answers = new Array(total);
   let currentIndex = 0;
+
+  if (questionCountLabel) {
+    questionCountLabel.textContent = total;
+  }
 
   function showScreen(screen) {
     [startScreen, quizScreen, resultScreen].forEach((el) => el.classList.add("hidden"));
