@@ -19,7 +19,6 @@
   const prevBtn = document.getElementById("prev-btn");
   const restartBtn = document.getElementById("restart-btn");
   const exportBtn = document.getElementById("export-btn");
-  const certificateBtn = document.getElementById("certificate-btn");
   const usernameInput = document.getElementById("username");
 
   const resultGreeting = document.getElementById("result-greeting");
@@ -137,10 +136,6 @@
     return { winner, tally };
   }
 
-  function getParticipantName() {
-    return usernameInput.value.trim() || "Участник";
-  }
-
   function getResultContext() {
     const { winner, tally } = computeWinner();
     const profile = data.profiles[winner];
@@ -150,13 +145,6 @@
     }
 
     return { winner, tally, profile };
-  }
-
-  function generateCertificateNumber() {
-    const timestamp = Date.now().toString(36).toUpperCase();
-    const randomPart = Math.random().toString(36).slice(2, 8).toUpperCase();
-    const year = new Date().getFullYear();
-    return `NC-${year}-${randomPart}-${timestamp.slice(-4)}`;
   }
 
   function showResult() {
@@ -218,66 +206,6 @@
     URL.revokeObjectURL(url);
   }
 
-  function downloadCertificate() {
-    if (!window.jspdf || !window.jspdf.jsPDF) {
-      console.error("Библиотека jsPDF не загружена");
-      return;
-    }
-
-    if (typeof DEJAVU_SANS_BASE64 !== "string" || !DEJAVU_SANS_BASE64) {
-      console.error("Шрифт DejaVu Sans не загружен");
-      return;
-    }
-
-    const { winner, profile } = getResultContext();
-    const participantName = getParticipantName();
-    const issueDate = new Date();
-    const certificateNumber = generateCertificateNumber();
-    const doc = new window.jspdf.jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-
-    doc.addFileToVFS("DejaVuSans.ttf", DEJAVU_SANS_BASE64);
-    doc.addFont("DejaVuSans.ttf", "DejaVuSans", "normal");
-    doc.setFont("DejaVuSans", "normal");
-
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 20;
-
-    doc.setFont(undefined, "bold");
-    doc.setFontSize(22);
-    doc.text("СЕРТИФИКАТ УЧАСТНИКА", pageWidth / 2, 40, { align: "center" });
-
-    doc.setDrawColor(82, 113, 255);
-    doc.setLineWidth(0.8);
-    doc.line(margin, 46, pageWidth - margin, 46);
-
-    doc.setFont(undefined, "normal");
-    doc.setFontSize(13);
-    doc.text(
-      `Подтверждается, что ${participantName} прошёл(а) профориентационный тест „Ваш мозг в IT“`,
-      margin,
-      60,
-      { maxWidth: pageWidth - margin * 2 }
-    );
-
-    doc.setFont(undefined, "bold");
-    doc.setFontSize(16);
-    doc.text("Результат теста", margin, 90);
-
-    doc.setFont(undefined, "normal");
-    doc.setFontSize(14);
-    doc.text(profile.title, margin, 102);
-    doc.text(`Профиль: ${winner}`, margin, 112);
-
-    doc.setFontSize(12);
-    doc.text(`Дата: ${issueDate.toLocaleDateString("ru-RU")}`, margin, 130);
-    doc.text(`Номер: ${certificateNumber}`, margin, 138);
-
-    doc.setFontSize(10);
-    doc.text("Сертификат носит образовательный и ознакомительный характер", margin, 162);
-
-    doc.save("neurocareer-certificate.pdf");
-  }
-
   startBtn.addEventListener("click", () => {
     showScreen(quizScreen);
     renderQuestion(currentIndex);
@@ -288,9 +216,6 @@
   prevBtn.addEventListener("click", goToPrev);
   restartBtn.addEventListener("click", restart);
   exportBtn.addEventListener("click", exportResult);
-  if (certificateBtn) {
-    certificateBtn.addEventListener("click", downloadCertificate);
-  }
 
   // Init first question for better perceived performance
   renderQuestion(currentIndex);
