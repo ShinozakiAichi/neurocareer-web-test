@@ -1,0 +1,24 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#1B2B44" />
+    <stop offset="1" stop-color="#0D1320" />
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#7AD7F0" />
+    <stop offset="1" stop-color="#63B3ED" />
+  </linearGradient>
+</defs>
+<rect width="640" height="480" rx="24" fill="url(#bg)"/>
+<circle cx="170" cy="240" r="120" fill="#101626" stroke="#7AD7F0" stroke-width="8" opacity="0.7"/>
+<circle cx="470" cy="240" r="120" fill="#101626" stroke="#63B3ED" stroke-width="8" opacity="0.7"/>
+<path d="M150 200C180 150 260 150 290 200C320 250 400 250 430 200" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="12 16"/>
+<path d="M180 280C210 230 270 230 300 280C330 330 390 330 420 280" stroke="#7AD7F0" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 14"/>
+<rect x="240" y="120" width="26" height="70" rx="10" fill="#7AD7F0"/>
+<rect x="374" y="120" width="26" height="70" rx="10" fill="#63B3ED"/>
+<circle cx="230" cy="220" r="10" fill="#7AD7F0"/>
+<circle cx="260" cy="220" r="10" fill="#7AD7F0"/>
+<circle cx="370" cy="220" r="10" fill="#63B3ED"/>
+<circle cx="400" cy="220" r="10" fill="#63B3ED"/>
+<text x="320" y="430" text-anchor="middle" fill="#E8ECF6" font-family="Inter, sans-serif" font-weight="700" font-size="28">Биоинженер</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bgarch" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#0E1422" />
+    <stop offset="1" stop-color="#0A0D16" />
+  </linearGradient>
+  <linearGradient id="accentarch" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#63B3ED" />
+    <stop offset="1" stop-color="#7AD7F0" />
+  </linearGradient>
+</defs>
+<rect width="640" height="480" rx="24" fill="url(#bgarch)"/>
+<rect x="120" y="140" width="120" height="200" rx="16" fill="#0C101C" stroke="#1C2434" stroke-width="8"/>
+<rect x="260" y="100" width="120" height="240" rx="16" fill="#0C101C" stroke="#1C2434" stroke-width="8"/>
+<rect x="400" y="160" width="120" height="180" rx="16" fill="#0C101C" stroke="#1C2434" stroke-width="8"/>
+<path d="M180 140V100H460V160" stroke="url(#accentarch)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="180" cy="100" r="10" fill="#7AD7F0"/>
+<circle cx="320" cy="100" r="10" fill="#63B3ED"/>
+<circle cx="460" cy="160" r="10" fill="#7AD7F0"/>
+<path d="M180 200H460" stroke="#63B3ED" stroke-width="8" stroke-dasharray="16 12" stroke-linecap="round"/>
+<path d="M180 260H460" stroke="#7AD7F0" stroke-width="8" stroke-dasharray="12 10" stroke-linecap="round"/>
+<path d="M180 320H460" stroke="#63B3ED" stroke-width="8" stroke-dasharray="10 8" stroke-linecap="round"/>
+<text x="320" y="430" text-anchor="middle" fill="#E8ECF6" font-family="Inter, sans-serif" font-weight="700" font-size="28">Architecture</text>
+</svg>
