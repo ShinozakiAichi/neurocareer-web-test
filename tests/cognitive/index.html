@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест «Когнитивный профиль»</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="app-header">
+      <div class="branding">
+        <div class="logo">⚡</div>
+        <div>
+          <p class="eyebrow">Когнитивный трек</p>
+          <h1>Тест «Когнитивный профиль»</h1>
+          <p class="subtitle">25 заданий, 20 минут. Работай быстро и точно.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="backlink" href="../../">← меню</a>
+        <div class="timer" id="timer" aria-live="polite">20:00</div>
+      </div>
+    </header>
+
+    <main id="app" class="app-shell">
+      <section id="start-screen" class="card">
+        <div class="card-body">
+          <h2>Перед стартом</h2>
+          <ul class="bullet-list">
+            <li>25 заданий разного типа</li>
+            <li>Старайся отвечать быстро и точно</li>
+            <li>Если сложно — пропускай, можно вернуться</li>
+            <li>На всё: 20 минут</li>
+          </ul>
+
+          <label class="field-label" for="username">Имя (необязательно)</label>
+          <input id="username" name="username" type="text" placeholder="Например: Алина" class="text-input" maxlength="40" autocomplete="off">
+
+          <div class="actions">
+            <button id="start-btn" class="btn primary">Начать</button>
+            <p class="hint">Таймер запустится при старте.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="card hidden" aria-live="polite">
+        <div class="card-body">
+          <div class="progress-row">
+            <div class="progress-info">
+              <span id="progress-label" class="progress-label">Вопрос 1 из 25</span>
+              <div class="progress-bar" aria-hidden="true">
+                <div id="progress-fill" class="progress-fill"></div>
+              </div>
+            </div>
+            <div class="step-counters">
+              <span id="step-indicator" class="pill">01 / 25</span>
+              <span id="block-label" class="pill subtle"></span>
+            </div>
+          </div>
+
+          <div id="question-container" class="question"></div>
+          <div id="options-container" class="options"></div>
+
+          <div class="actions spaced">
+            <button id="prev-btn" class="btn ghost">Назад</button>
+            <div class="action-right">
+              <span id="selection-hint" class="hint">Можно пропустить и вернуться позже</span>
+              <div class="action-group">
+                <button id="skip-btn" class="btn ghost">Пропустить</button>
+                <button id="next-btn" class="btn primary" disabled>Далее</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result-screen" class="card hidden">
+        <div class="card-body result-layout">
+          <div class="result-text">
+            <p class="eyebrow" id="result-greeting">Готово!</p>
+            <h2 id="result-title">Твой результат</h2>
+            <p id="result-score" class="lead"></p>
+            <p id="result-level" class="pill large"></p>
+
+            <div class="result-block">
+              <h3>Интерпретация</h3>
+              <p id="result-interpretation"></p>
+            </div>
+
+            <div class="result-block">
+              <h3>Ошибки</h3>
+              <ul id="mistake-list" class="bullet-list"></ul>
+            </div>
+
+            <div class="result-block">
+              <button id="answers-toggle" class="btn outline small" aria-expanded="false" aria-controls="answers-panel">Верные ответы</button>
+              <div id="answers-panel" class="accordion hidden" role="region" aria-hidden="true"></div>
+            </div>
+
+            <div class="result-actions">
+              <button id="restart-btn" class="btn ghost">Пройти заново</button>
+              <button id="export-btn" class="btn outline">Экспорт в JSON</button>
+            </div>
+          </div>
+          <div class="result-visual">
+            <div class="summary-pill" id="result-summary"></div>
+            <div class="time-pill" id="result-time"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="test-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
