@@ -1,108 +1,127 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ваш мозг в IT: Какая роль в команде нейротехнологов тебе подходит?</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профориентационные тесты</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: rgba(23, 26, 36, 0.9);
+      --text: #e8ecf6;
+      --muted: #9aa2b5;
+      --accent: #7ad7f0;
+      --accent-strong: #63b3ed;
+      --border: #222636;
+      --shadow: 0 15px 60px rgba(0,0,0,.35);
+      --radius: 14px;
+      font-size: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(99,179,237,.08), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(87,248,196,.08), transparent 30%),
+        linear-gradient(135deg, #0b0c12, #0f1117);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 18px 48px;
+    }
+    header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .logo {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0f1117;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+    h1 { margin: 0; font-size: 2rem; }
+    .subtitle { margin: 6px 0 0; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .18s ease, border-color .18s ease;
+      display: grid;
+      gap: 10px;
+      min-height: 140px;
+    }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(99,179,237,.12);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+    .title { font-size: 1.2rem; font-weight: 800; margin: 0; }
+    .desc { margin: 0; color: var(--muted); }
+    .meta { margin-top: auto; color: var(--muted); font-size: .9rem; }
+  </style>
 </head>
 <body>
   <div class="page">
-    <header class="app-header">
-      <div class="branding">
-        <div class="logo">🧠</div>
-        <div>
-          <p class="eyebrow">Нейро-компас</p>
-          <h1>Ваш мозг в IT</h1>
-          <p class="subtitle">Какая роль в команде нейротехнологов тебе подходит?</p>
-        </div>
+    <header>
+      <div class="logo">🧠</div>
+      <div>
+        <h1>Профориентационные тесты</h1>
+        <p class="subtitle">Выбери тест и пройди его прямо в браузере. Без серверов, без боли. Почти.</p>
       </div>
-      <div class="theme-glow" aria-hidden="true"></div>
     </header>
 
-    <main id="app" class="app-shell">
-      <section id="start-screen" class="card">
-        <div class="card-body">
-          <h2>Проверь, где твоя сила</h2>
-          <p class="lead">Тест из <span id="question-count"></span> вопросов о том, как ты думаешь, решаешь задачи и работаешь с людьми. Ответь честно и узнай, какую роль в команде нейротехнологов ты сыграешь лучше всего.</p>
+    <section class="grid">
+      <a class="card" href="tests/neurocareer/index.html">
+        <span class="pill">24 вопроса • IT/Нейро</span>
+        <p class="title">Ваш мозг в IT</p>
+        <p class="desc">Определяет роль в команде: биоинженер, ML/данные, UX/UI, архитектор.</p>
+        <div class="meta">Профиль: А/Б/В/Г • Экспорт JSON</div>
+      </a>
 
-          <label class="field-label" for="username">Имя (необязательно)</label>
-          <input id="username" name="username" type="text" placeholder="Например: Алина" class="text-input" maxlength="40" autocomplete="off">
+      <a class="card" href="tests/cognitive/index.html">
+        <span class="pill">25 заданий • 20 минут</span>
+        <p class="title">Когнитивный профиль</p>
+        <p class="desc">Быстрая проверка логики, числовых навыков и пространственного мышления.</p>
+        <div class="meta">Скоринг 0–25 • уровни 5 градаций</div>
+      </a>
 
-          <div class="actions">
-            <button id="start-btn" class="btn primary">Начать тест</button>
-            <p class="hint">Можно пройти анонимно — имя используется только в результате.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="quiz-screen" class="card hidden" aria-live="polite">
-        <div class="card-body">
-          <div class="progress-row">
-            <div class="progress-info">
-              <span id="progress-label" class="progress-label">Вопрос 1 из …</span>
-              <div class="progress-bar" aria-hidden="true">
-                <div id="progress-fill" class="progress-fill"></div>
-              </div>
-            </div>
-            <div class="step-counters">
-              <span id="step-indicator" class="pill">01 / --</span>
-            </div>
-          </div>
-
-          <div id="question-container" class="question"></div>
-          <div id="options-container" class="options"></div>
-
-          <div class="actions spaced">
-            <button id="prev-btn" class="btn ghost">Назад</button>
-            <div class="action-right">
-              <span id="selection-hint" class="hint">Выбери вариант, чтобы продолжить</span>
-              <button id="next-btn" class="btn primary" disabled>Далее</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="result-screen" class="card hidden">
-        <div class="card-body result-layout">
-          <div class="result-text">
-            <p class="eyebrow" id="result-greeting">Готово!</p>
-            <h2 id="result-title">Твой профиль</h2>
-            <p id="result-role" class="lead"></p>
-
-            <div class="result-block">
-              <h3>Твоя суперсила</h3>
-              <p id="result-superpower"></p>
-            </div>
-
-            <div class="result-block">
-              <h3>Твоя роль в команде</h3>
-              <p id="result-role-description"></p>
-            </div>
-
-            <div class="result-block">
-              <h3>Что изучать</h3>
-              <ul id="result-learning" class="tag-list"></ul>
-            </div>
-
-            <div class="result-actions">
-              <button id="restart-btn" class="btn ghost">Пройти тест заново</button>
-              <button id="export-btn" class="btn outline">Экспорт в JSON</button>
-            </div>
-          </div>
-          <div class="result-visual">
-            <div class="image-frame">
-              <img id="result-image" src="" alt="Иллюстрация профиля">
-            </div>
-            <div id="result-badge" class="result-badge">Профиль</div>
-            <div class="summary-pill" id="result-summary"></div>
-          </div>
-        </div>
-      </section>
-    </main>
+      <a class="card" href="tests/test2/">
+        <span class="pill">Новый тест • по ТЗ</span>
+        <p class="title">Тест #2 (в разработке)</p>
+        <p class="desc">Заглушка. Подключим вопросы и логику, как только принесёшь ТЗ.</p>
+        <div class="meta">Скоро будет • не ной</div>
+      </a>
+    </section>
   </div>
-
-  <script src="test-data.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
