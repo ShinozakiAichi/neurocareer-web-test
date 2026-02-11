@@ -1,24 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ваш мозг в IT: Какая роль в команде нейротехнологов тебе подходит?</title>
+  <title>Ваш мозг в IT: профориентационный тест</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="page">
     <header class="app-header">
       <div class="branding">
-        <div class="logo">🧠</div>
+        <div class="logo">НК</div>
         <div>
-          <p class="eyebrow">Нейро-компас</p>
+          <p class="eyebrow">Профориентационный модуль</p>
           <h1>Ваш мозг в IT</h1>
-          <p class="subtitle">Какая роль в команде нейротехнологов тебе подходит?</p>
+          <p class="subtitle">Определение предпочтительной роли в команде нейротехнологических проектов.</p>
         </div>
       </div>
       <div class="header-actions">
-        <a class="backlink" href="../../">← меню</a>
+        <a class="backlink" href="../../">← В главное меню</a>
       </div>
       <div class="theme-glow" aria-hidden="true"></div>
     </header>
@@ -26,15 +26,15 @@
     <main id="app" class="app-shell">
       <section id="start-screen" class="card">
         <div class="card-body">
-          <h2>Проверь, где твоя сила</h2>
-          <p class="lead">Тест из <span id="question-count"></span> вопросов о том, как ты думаешь, решаешь задачи и работаешь с людьми. Ответь честно и узнай, какую роль в команде нейротехнологов ты сыграешь лучше всего.</p>
+          <h2>Порядок прохождения</h2>
+          <p class="lead">Тест включает <span id="question-count"></span> вопросов о стиле мышления, подходе к решению задач и формате командной работы. Отвечайте в соответствии с вашими реальными предпочтениями.</p>
 
           <label class="field-label" for="username">Имя (необязательно)</label>
           <input id="username" name="username" type="text" placeholder="Например: Алина" class="text-input" maxlength="40" autocomplete="off">
 
           <div class="actions">
-            <button id="start-btn" class="btn primary">Начать тест</button>
-            <p class="hint">Можно пройти анонимно — имя используется только в результате.</p>
+            <button id="start-btn" class="btn primary">Начать тестирование</button>
+            <p class="hint">Указанное имя используется только в итоговом отчёте.</p>
           </div>
         </div>
       </section>
@@ -59,7 +59,7 @@
           <div class="actions spaced">
             <button id="prev-btn" class="btn ghost">Назад</button>
             <div class="action-right">
-              <span id="selection-hint" class="hint">Выбери вариант, чтобы продолжить</span>
+              <span id="selection-hint" class="hint">Выберите вариант ответа для продолжения</span>
               <button id="next-btn" class="btn primary" disabled>Далее</button>
             </div>
           </div>
@@ -69,27 +69,27 @@
       <section id="result-screen" class="card hidden">
         <div class="card-body result-layout">
           <div class="result-text">
-            <p class="eyebrow" id="result-greeting">Готово!</p>
-            <h2 id="result-title">Твой профиль</h2>
+            <p class="eyebrow" id="result-greeting">Тест завершён</p>
+            <h2 id="result-title">Ваш профиль</h2>
             <p id="result-role" class="lead"></p>
 
             <div class="result-block">
-              <h3>Твоя суперсила</h3>
+              <h3>Ключевая сильная сторона</h3>
               <p id="result-superpower"></p>
             </div>
 
             <div class="result-block">
-              <h3>Твоя роль в команде</h3>
+              <h3>Предпочтительная роль в команде</h3>
               <p id="result-role-description"></p>
             </div>
 
             <div class="result-block">
-              <h3>Что изучать</h3>
+              <h3>Рекомендуемые направления развития</h3>
               <ul id="result-learning" class="tag-list"></ul>
             </div>
 
             <div class="result-actions">
-              <button id="restart-btn" class="btn ghost">Пройти тест заново</button>
+              <button id="restart-btn" class="btn ghost">Пройти тест повторно</button>
               <button id="export-btn" class="btn outline">Экспорт в JSON</button>
             </div>
           </div>

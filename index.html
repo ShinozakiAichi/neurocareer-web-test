@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -6,113 +6,171 @@
   <title>Профориентационные тесты</title>
   <style>
     :root {
-      --bg: #0f1117;
-      --card: rgba(23, 26, 36, 0.9);
-      --text: #e8ecf6;
-      --muted: #9aa2b5;
-      --accent: #7ad7f0;
-      --accent-strong: #63b3ed;
-      --border: #222636;
-      --shadow: 0 15px 60px rgba(0,0,0,.35);
+      --bg: #0d1525;
+      --bg-deep: #0a1220;
+      --surface: rgba(21, 30, 46, 0.94);
+      --surface-soft: rgba(29, 41, 63, 0.9);
+      --text: #e8eef9;
+      --muted: #aab7cd;
+      --accent: #8fb2ef;
+      --accent-strong: #5a84ca;
+      --border: #2a3854;
+      --shadow: 0 18px 44px rgba(3, 8, 18, 0.45);
       --radius: 14px;
       font-size: 16px;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 20%, rgba(99,179,237,.08), transparent 30%),
-        radial-gradient(circle at 85% 10%, rgba(87,248,196,.08), transparent 30%),
-        linear-gradient(135deg, #0b0c12, #0f1117);
+        radial-gradient(circle at 8% 2%, rgba(143, 178, 239, 0.14), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(90, 132, 202, 0.14), transparent 26%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 52%, #0b1322 100%);
       color: var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
       line-height: 1.6;
     }
+
     .page {
       max-width: 1100px;
       margin: 0 auto;
       padding: 32px 18px 48px;
     }
+
     header {
       display: flex;
       gap: 16px;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
+      padding: 6px 4px 20px;
+      border-bottom: 1px solid var(--border);
     }
+
     .logo {
-      width: 50px; height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
-      display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #0f1117;
-      font-size: 24px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent-strong), #3f66a5);
+      color: #f7fbff;
+      font-size: 1rem;
       font-weight: 800;
+      letter-spacing: 0.04em;
       box-shadow: var(--shadow);
     }
-    h1 { margin: 0; font-size: 2rem; }
-    .subtitle { margin: 6px 0 0; color: var(--muted); }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f2f6ff;
+    }
+
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
 
     .grid {
       display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       margin-top: 18px;
     }
+
     .card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 18px;
+      padding: 20px;
       text-decoration: none;
       color: var(--text);
-      transition: transform .18s ease, border-color .18s ease;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
       display: grid;
       gap: 10px;
-      min-height: 140px;
+      min-height: 170px;
     }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 22px 48px rgba(3, 8, 18, 0.52);
+    }
+
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       width: fit-content;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(99,179,237,.12);
-      color: var(--accent);
+      border: 1px solid #405474;
+      background: var(--surface-soft);
+      color: #d9e5ff;
       font-weight: 700;
-      font-size: .85rem;
+      font-size: 0.85rem;
     }
-    .title { font-size: 1.2rem; font-weight: 800; margin: 0; }
-    .desc { margin: 0; color: var(--muted); }
-    .meta { margin-top: auto; color: var(--muted); font-size: .9rem; }
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0;
+      color: #f2f6ff;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .meta {
+      margin-top: auto;
+      color: #c0cce1;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 14px 32px;
+      }
+
+      header {
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="logo">🧠</div>
+      <div class="logo">НК</div>
       <div>
         <h1>Профориентационные тесты</h1>
-        <p class="subtitle">Выбери тест и пройди его прямо в браузере. Без серверов, без боли. Почти.</p>
+        <p class="subtitle">Выберите диагностический модуль и пройдите тестирование в браузере. Результаты помогут определить сильные стороны и приоритетные направления обучения.</p>
       </div>
     </header>
 
     <section class="grid">
       <a class="card" href="tests/neurocareer/index.html">
-        <span class="pill">24 вопроса • IT/Нейро</span>
-        <p class="title">Ваш мозг в IT</p>
-        <p class="desc">Определяет роль в команде: биоинженер, ML/данные, UX/UI, архитектор.</p>
-        <div class="meta">Профиль: А/Б/В/Г • Экспорт JSON</div>
+        <span class="pill">24 вопроса • ИТ и нейротехнологии</span>
+        <p class="title">Профиль «Ваш мозг в IT»</p>
+        <p class="desc">Оценка предпочтительной роли в проектной команде: биоинженерия, анализ данных и ML, UX/UI, архитектура решений.</p>
+        <div class="meta">Результат: профиль А/Б/В/Г • выгрузка в JSON</div>
       </a>
 
       <a class="card" href="tests/cognitive/index.html">
         <span class="pill">25 заданий • 20 минут</span>
-        <p class="title">Когнитивный профиль</p>
-        <p class="desc">Быстрая проверка логики, числовых навыков и пространственного мышления.</p>
-        <div class="meta">Скоринг 0–25 • уровни 5 градаций</div>
+        <p class="title">Тест «Когнитивный профиль»</p>
+        <p class="desc">Комплексная проверка логического, числового и пространственного мышления в стандартизированном формате.</p>
+        <div class="meta">Шкала: 0–25 баллов • 5 уровней интерпретации</div>
       </a>
     </section>
   </div>

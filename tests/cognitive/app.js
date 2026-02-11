@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const data = window.testData;
   if (!data) throw new Error("Не удалось загрузить данные теста");
 
@@ -114,7 +114,7 @@
     const input = document.createElement("input");
     input.type = "number";
     input.className = "number-input";
-    input.placeholder = "Введи число";
+    input.placeholder = "Введите число";
     input.value = answerState.value ?? "";
     input.addEventListener("input", (event) => {
       const val = event.target.value;
@@ -131,7 +131,9 @@
     const state = answers[currentIndex];
     const hasValue = state.value !== null && state.value !== undefined && state.value !== "";
     nextBtn.disabled = !hasValue && !state.skipped;
-    selectionHint.textContent = state.skipped ? "Ответ пропущен, можно вернуться позже" : "Можно пропустить и вернуться позже";
+    selectionHint.textContent = state.skipped
+      ? "Задание пропущено. Вы можете вернуться к нему позже"
+      : "При необходимости можно пропустить задание и вернуться к нему позже";
   }
 
   function updateProgress(index) {
@@ -214,7 +216,7 @@
     mistakeList.innerHTML = "";
     if (!mistakes.length) {
       const ok = document.createElement("li");
-      ok.textContent = "Ошибок нет";
+      ok.textContent = "Ошибок не обнаружено";
       mistakeList.appendChild(ok);
       return;
     }
@@ -228,7 +230,7 @@
 
   function buildAnswersAccordion() {
     answersPanel.innerHTML = "";
-    data.questions.forEach((question, idx) => {
+    data.questions.forEach((question) => {
       const item = document.createElement("div");
       item.className = "accordion-item";
 
@@ -239,10 +241,10 @@
       const answerEl = document.createElement("p");
       answerEl.className = "accordion-answer";
       if (question.type === "choice") {
-        answerEl.textContent = `Верный вариант: ${question.options[question.correctKey]}`;
+        answerEl.textContent = `Правильный вариант: ${question.options[question.correctKey]}`;
       } else {
         const tolerance = question.tolerance ? ` (±${question.tolerance})` : "";
-        answerEl.textContent = `Верный ответ: ${question.correctNumber}${tolerance}`;
+        answerEl.textContent = `Правильный ответ: ${question.correctNumber}${tolerance}`;
       }
 
       item.appendChild(questionEl);
@@ -260,11 +262,11 @@
     const band = findBand(score);
 
     const username = usernameInput.value.trim();
-    resultGreeting.textContent = username ? `${username}, твой результат` : "Готово!";
+    resultGreeting.textContent = username ? `${username}, результат тестирования` : "Тест завершен";
     resultTitle.textContent = data.title;
     resultScore.textContent = `${score} / ${total}`;
-    resultLevel.textContent = band ? band.title : "Уровень не определён";
-    resultInterpretation.textContent = band ? band.text : "Нет интерпретации";
+    resultLevel.textContent = band ? band.title : "Уровень не определен";
+    resultInterpretation.textContent = band ? band.text : "Интерпретация отсутствует";
 
     buildMistakeList(mistakes);
     buildAnswersAccordion();
@@ -279,7 +281,7 @@
       .join(" | ");
     resultSummary.textContent = `Ответы: ${summary}`;
 
-    const timeText = byTimeout ? "Время истекло" : "Завершено досрочно";
+    const timeText = byTimeout ? "Время истекло" : "Тест завершен досрочно";
     const remaining = Math.max(0, timeLeft);
     resultTime.textContent = `${timeText}. Использовано: ${formatTime(durationSec)}. Осталось: ${formatTime(remaining)}.`;
 
@@ -294,7 +296,7 @@
     currentIndex = 0;
     timeLeft = data.timeLimitSec;
     updateTimerUi();
-    selectionHint.textContent = "Можно пропустить и вернуться позже";
+    selectionHint.textContent = "При необходимости можно пропустить задание и вернуться к нему позже";
     showScreen(startScreen);
   }
 
@@ -350,7 +352,6 @@
   });
   exportBtn.addEventListener("click", exportResult);
 
-  // Pre-render first question for perceived performance and timer state
   renderQuestion(currentIndex);
   updateTimerUi();
 })();

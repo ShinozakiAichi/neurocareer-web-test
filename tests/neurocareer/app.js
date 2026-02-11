@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const data = window.testData;
   if (!data) {
     throw new Error("Не удалось загрузить тестовые данные");
@@ -50,7 +50,6 @@
     if (!question) return;
 
     questionContainer.classList.remove("fade-in");
-    // Force reflow to replay animation
     void questionContainer.offsetWidth;
     questionContainer.textContent = question.text;
     questionContainer.classList.add("fade-in");
@@ -78,7 +77,9 @@
     prevBtn.disabled = currentIndex === 0;
     const hasAnswer = Boolean(answers[currentIndex]);
     nextBtn.disabled = !hasAnswer;
-    selectionHint.textContent = hasAnswer ? "Можно перейти к следующему вопросу" : "Выбери вариант, чтобы продолжить";
+    selectionHint.textContent = hasAnswer
+      ? "Можно перейти к следующему вопросу"
+      : "Выберите вариант ответа для продолжения";
   }
 
   function updateProgress(index) {
@@ -151,9 +152,9 @@
     const { winner, tally, profile } = getResultContext();
 
     const username = usernameInput.value.trim();
-    resultGreeting.textContent = username ? `${username}, твой результат` : "Готово!";
+    resultGreeting.textContent = username ? `${username}, результат тестирования` : "Тест завершен";
     resultTitle.textContent = profile.title;
-    resultRole.textContent = `Лидирует буква ${winner}`;
+    resultRole.textContent = `Доминирующий профиль: ${winner}`;
     resultSuperpower.textContent = profile.superpower;
     resultRoleDescription.textContent = profile.role;
 
@@ -171,7 +172,7 @@
     const summary = Object.entries(tally)
       .map(([key, value]) => `${key}: ${value}`)
       .join(" • ");
-    resultSummary.textContent = `Выборы: ${summary}`;
+    resultSummary.textContent = `Распределение ответов: ${summary}`;
 
     showScreen(resultScreen);
   }
@@ -217,6 +218,5 @@
   restartBtn.addEventListener("click", restart);
   exportBtn.addEventListener("click", exportResult);
 
-  // Init first question for better perceived performance
   renderQuestion(currentIndex);
 })();

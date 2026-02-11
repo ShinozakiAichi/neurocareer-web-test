@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -10,15 +10,15 @@
   <div class="page">
     <header class="app-header">
       <div class="branding">
-        <div class="logo">⚡</div>
+        <div class="logo">IQ</div>
         <div>
-          <p class="eyebrow">Когнитивный трек</p>
+          <p class="eyebrow">Оценочный модуль</p>
           <h1>Тест «Когнитивный профиль»</h1>
-          <p class="subtitle">25 заданий, 20 минут. Работай быстро и точно.</p>
+          <p class="subtitle">25 заданий, лимит времени 20 минут. Выполняйте последовательно и внимательно.</p>
         </div>
       </div>
       <div class="header-actions">
-        <a class="backlink" href="../../">← меню</a>
+        <a class="backlink" href="../../">← В главное меню</a>
         <div class="timer" id="timer" aria-live="polite">20:00</div>
       </div>
     </header>
@@ -26,20 +26,20 @@
     <main id="app" class="app-shell">
       <section id="start-screen" class="card">
         <div class="card-body">
-          <h2>Перед стартом</h2>
+          <h2>Перед началом тестирования</h2>
           <ul class="bullet-list">
-            <li>25 заданий разного типа</li>
-            <li>Старайся отвечать быстро и точно</li>
-            <li>Если сложно — пропускай, можно вернуться</li>
-            <li>На всё: 20 минут</li>
+            <li>Структура: 25 заданий разного типа</li>
+            <li>Рекомендуемый режим: быстро и точно</li>
+            <li>Допускается пропуск задания с последующим возвратом</li>
+            <li>Общее время выполнения: 20 минут</li>
           </ul>
 
           <label class="field-label" for="username">Имя (необязательно)</label>
           <input id="username" name="username" type="text" placeholder="Например: Алина" class="text-input" maxlength="40" autocomplete="off">
 
           <div class="actions">
-            <button id="start-btn" class="btn primary">Начать</button>
-            <p class="hint">Таймер запустится при старте.</p>
+            <button id="start-btn" class="btn primary">Начать тестирование</button>
+            <p class="hint">Отсчёт времени запускается после нажатия кнопки.</p>
           </div>
         </div>
       </section>
@@ -65,7 +65,7 @@
           <div class="actions spaced">
             <button id="prev-btn" class="btn ghost">Назад</button>
             <div class="action-right">
-              <span id="selection-hint" class="hint">Можно пропустить и вернуться позже</span>
+              <span id="selection-hint" class="hint">При необходимости задание можно пропустить</span>
               <div class="action-group">
                 <button id="skip-btn" class="btn ghost">Пропустить</button>
                 <button id="next-btn" class="btn primary" disabled>Далее</button>
@@ -78,8 +78,8 @@
       <section id="result-screen" class="card hidden">
         <div class="card-body result-layout">
           <div class="result-text">
-            <p class="eyebrow" id="result-greeting">Готово!</p>
-            <h2 id="result-title">Твой результат</h2>
+            <p class="eyebrow" id="result-greeting">Тест завершён</p>
+            <h2 id="result-title">Итоговый результат</h2>
             <p id="result-score" class="lead"></p>
             <p id="result-level" class="pill large"></p>
 
@@ -89,17 +89,17 @@
             </div>
 
             <div class="result-block">
-              <h3>Ошибки</h3>
+              <h3>Задания с ошибками</h3>
               <ul id="mistake-list" class="bullet-list"></ul>
             </div>
 
             <div class="result-block">
-              <button id="answers-toggle" class="btn outline small" aria-expanded="false" aria-controls="answers-panel">Верные ответы</button>
+              <button id="answers-toggle" class="btn outline small" aria-expanded="false" aria-controls="answers-panel">Показать правильные ответы</button>
               <div id="answers-panel" class="accordion hidden" role="region" aria-hidden="true"></div>
             </div>
 
             <div class="result-actions">
-              <button id="restart-btn" class="btn ghost">Пройти заново</button>
+              <button id="restart-btn" class="btn ghost">Пройти тест повторно</button>
               <button id="export-btn" class="btn outline">Экспорт в JSON</button>
             </div>
           </div>
